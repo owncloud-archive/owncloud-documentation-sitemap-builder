@@ -1,5 +1,5 @@
 {
-  "name": "owncloud/sitemap-builder",
+  "name": "owncloud/owncloud-documentation-sitemap-builder",
   "description": "A package for building the ownCloud documentation sitemap.xml file",
   "type": "library",
   "license": "BSD-3-Clause",
