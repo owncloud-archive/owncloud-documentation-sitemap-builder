@@ -2,11 +2,11 @@
 
 This is a simple project to build a valid sitemap.xml string from the files in the documentation repository.
 
-[![Build Status](https://img.shields.io/travis/settermjd/owncloud-documentation-sitemap-builder/master.svg?style=flat-square)](https://travis-ci.org/settermjd/owncloud-documentation-sitemap-builder)
-[![Coverage Status](https://img.shields.io/coveralls/settermjd/owncloud-documentation-sitemap-builder/master.svg?style=flat-square)](https://coveralls.io/r/settermjd/owncloud-documentation-sitemap-builder?branch=master)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/settermjd/owncloud-documentation-sitemap-builder.svg?style=flat-square)](https://scrutinizer-ci.com/g/settermjd/owncloud-documentation-sitemap-builder/?branch=master)
-[![Latest Version](https://img.shields.io/github/release/settermjd/owncloud-documentation-sitemap-builder.svg?style=flat-square)](https://packagist.org/packages/settermjd/owncloud-documentation-sitemap-builder)
-[![Total Downloads](https://img.shields.io/packagist/dt/settermjd/owncloud-documentation-sitemap-builder.svg?style=flat-square)](https://packagist.org/packages/settermjd/owncloud-documentation-sitemap-builder)
+[![Build Status](https://img.shields.io/travis/owncloud/owncloud-documentation-sitemap-builder/master.svg?style=flat-square)](https://travis-ci.org/owncloud/owncloud-documentation-sitemap-builder)
+[![Coverage Status](https://img.shields.io/coveralls/owncloud/owncloud-documentation-sitemap-builder/master.svg?style=flat-square)](https://coveralls.io/r/owncloud/owncloud-documentation-sitemap-builder?branch=master)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/owncloud/owncloud-documentation-sitemap-builder.svg?style=flat-square)](https://scrutinizer-ci.com/g/owncloud/owncloud-documentation-sitemap-builder/?branch=master)
+[![Latest Version](https://img.shields.io/github/release/owncloud/owncloud-documentation-sitemap-builder.svg?style=flat-square)](https://packagist.org/packages/owncloud/owncloud-documentation-sitemap-builder)
+[![Total Downloads](https://img.shields.io/packagist/dt/owncloud/owncloud-documentation-sitemap-builder.svg?style=flat-square)](https://packagist.org/packages/owncloud/owncloud-documentation-sitemap-builder)
 
 ## Why?
 
