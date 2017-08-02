@@ -1,0 +1,45 @@
+{
+  "name": "owncloud/sitemap-builder",
+  "description": "A package for building the ownCloud documentation sitemap.xml file",
+  "type": "library",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "sitemap.xml"
+  ],
+  "authors": [
+    {
+      "name": "Matthew Setter",
+      "email": "matthew.setter@gmail.com",
+      "homepage": "https://matthewsetter.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.0",
+    "roave/security-advisories": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "OwnCloud\\SiteMapBuilder\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "OwnCloud\\SiteMapBuilderTest\\": "test/"
+    }
+  },
+  "scripts": {
+    "check": [
+      "@cs-check",
+      "@test"
+    ],
+    "cs-check": "phpcs --standard=PSR2 src/ test/",
+    "cs-fix": "phpcbf",
+    "test": "phpunit --colors=always",
+    "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
+    "upload-coverage": "coveralls -v"
+  }
+}
