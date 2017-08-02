@@ -32,14 +32,25 @@ class SitemapBuilder
     private $priority;
 
     /**
+     * @var string
+     */
+    private $changeFrequency;
+
+    /**
      * SitemapBuilder constructor.
      * @param string $basePath
      * @param string $version
-     * @param string $priority
+     * @param float|string $priority
+     * @param string $changeFrequency
      */
-    public function __construct($basePath = self::BASE_PATH, $version = self::VERSION, $priority = self::PRIORITY)
-    {
+    public function __construct(
+        $basePath = self::BASE_PATH,
+        $version = self::VERSION,
+        $priority = self::PRIORITY,
+        $changeFrequency = Component\Url::CHANGE_FREQUENCY_WEEKLY
+    ) {
         $this->basePath = $basePath;
+        $this->changeFrequency = $changeFrequency;
         $this->version = $version;
         $this->priority = $priority;
     }
@@ -87,7 +98,7 @@ class SitemapBuilder
             $url = new Component\Url($file);
             $urlList[] = $url
                 ->withLastModified(new \DateTime())
-                ->withChangeFrequency(Component\Url::CHANGE_FREQUENCY_WEEKLY)
+                ->withChangeFrequency($this->changeFrequency)
                 ->withPriority($this->priority)
             ;
         }

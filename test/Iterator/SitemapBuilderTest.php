@@ -81,80 +81,81 @@ class SitemapBuilderTest extends \PHPUnit\Framework\TestCase
     public function testCanBuildSitemapCorrectly()
     {
         $priority = 0.6;
-        $builder = new SitemapBuilder('https://doc.owncloud.com/server', '10.0', $priority);
+        $changeFreq = 'daily';
+        $builder = new SitemapBuilder('https://doc.owncloud.com/server', '10.0', $priority, $changeFreq);
 
         $testSitemapXml = '<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://doc.owncloud.com/server/10.0/user_manual/whats_new.html</loc>
     <lastmod>%1$s</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>%3$s</changefreq>
     <priority>%2$s</priority>
   </url>
   <url>
     <loc>https://doc.owncloud.com/server/10.0/user_manual/files/access_webdav.html</loc>
     <lastmod>%1$s</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>%3$s</changefreq>
     <priority>%2$s</priority>
   </url>
   <url>
     <loc>https://doc.owncloud.com/server/10.0/user_manual/files/deleted_file_management.html</loc>
     <lastmod>%1$s</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>%3$s</changefreq>
     <priority>%2$s</priority>
   </url>
   <url>
     <loc>https://doc.owncloud.com/server/10.0/user_manual/files/desktop_mobile_sync.html</loc>
     <lastmod>%1$s</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>%3$s</changefreq>
     <priority>%2$s</priority>
   </url>
   <url>
     <loc>https://doc.owncloud.com/server/10.0/user_manual/files/encrypting_files.html</loc>
     <lastmod>%1$s</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>%3$s</changefreq>
     <priority>%2$s</priority>
   </url>
   <url>
     <loc>https://doc.owncloud.com/server/10.0/user_manual/files/federated_cloud_sharing.html</loc>
     <lastmod>%1$s</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>%3$s</changefreq>
     <priority>%2$s</priority>
   </url>
   <url>
     <loc>https://doc.owncloud.com/server/10.0/user_manual/files/gallery_app.html</loc>
     <lastmod>%1$s</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>%3$s</changefreq>
     <priority>%2$s</priority>
   </url>
   <url>
     <loc>https://doc.owncloud.com/server/10.0/user_manual/files/index.html</loc>
     <lastmod>%1$s</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>%3$s</changefreq>
     <priority>%2$s</priority>
   </url>
   <url>
     <loc>https://doc.owncloud.com/server/10.0/user_manual/files/large_file_upload.html</loc>
     <lastmod>%1$s</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>%3$s</changefreq>
     <priority>%2$s</priority>
   </url>
   <url>
     <loc>https://doc.owncloud.com/server/10.0/user_manual/files/public_link_shares.html</loc>
     <lastmod>%1$s</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>%3$s</changefreq>
     <priority>%2$s</priority>
   </url>
   <url>
     <loc>https://doc.owncloud.com/server/10.0/user_manual/files/troubleshooting.html</loc>
     <lastmod>%1$s</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>%3$s</changefreq>
     <priority>%2$s</priority>
   </url>
   <url>
     <loc>https://doc.owncloud.com/server/10.0/user_manual/files/version_control.html</loc>
     <lastmod>%1$s</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>%3$s</changefreq>
     <priority>%2$s</priority>
   </url>
 </urlset>';
@@ -170,7 +171,7 @@ class SitemapBuilderTest extends \PHPUnit\Framework\TestCase
         $dom->formatOutput = true;
 
         $this->assertSame(
-            sprintf($testSitemapXml, (new \DateTime())->format(\DateTime::W3C), $priority),
+            sprintf($testSitemapXml, (new \DateTime())->format(\DateTime::W3C), $priority, $changeFreq),
             trim($dom->saveXml())
         );
     }
