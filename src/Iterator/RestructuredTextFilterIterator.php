@@ -1,6 +1,6 @@
 <?php
 
-namespace OwnCloud\SiteMapBuilder;
+namespace OwnCloud\SiteMapBuilder\Iterator;
 
 /**
  * Class RestructuredTextFilterIterator

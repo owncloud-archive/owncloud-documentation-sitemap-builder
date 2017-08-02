@@ -1,8 +1,8 @@
 <?php
 
-namespace OwnCloud\SiteMapBuilderTest;
+namespace OwnCloud\SiteMapBuilderTest\Iterator;
 
-use OwnCloud\SiteMapBuilder\RestructuredTextFilterIterator;
+use OwnCloud\SiteMapBuilder\Iterator\RestructuredTextFilterIterator;
 use PHPUnit\Framework\TestCase;
 
 /**
