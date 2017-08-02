@@ -13,6 +13,7 @@ use Refinery29\Sitemap\Writer;
 class SitemapBuilder
 {
     const BASE_PATH = 'https://doc.owncloud.com/server';
+    const CHANGEFREQ = 0.8;
     const VERSION = '10.0';
 
     /**
@@ -26,14 +27,21 @@ class SitemapBuilder
     private $version;
 
     /**
+     * @var float
+     */
+    private $changeFreq;
+
+    /**
      * SitemapBuilder constructor.
      * @param string $basePath
      * @param string $version
+     * @param string $changeFreq
      */
-    public function __construct($basePath = self::BASE_PATH, $version = self::VERSION)
+    public function __construct($basePath = self::BASE_PATH, $version = self::VERSION, $changeFreq = self::CHANGEFREQ)
     {
         $this->basePath = $basePath;
         $this->version = $version;
+        $this->changeFreq = $changeFreq;
     }
 
     /**
@@ -80,7 +88,7 @@ class SitemapBuilder
             $urlList[] = $url
                 ->withLastModified(new \DateTime())
                 ->withChangeFrequency(Component\Url::CHANGE_FREQUENCY_WEEKLY)
-                ->withPriority(0.8)
+                ->withPriority($this->changeFreq)
             ;
         }
 
