@@ -80,8 +80,8 @@ class SitemapBuilderTest extends \PHPUnit\Framework\TestCase
 
     public function testCanBuildSitemapCorrectly()
     {
-        $changeFreq = 0.6;
-        $builder = new SitemapBuilder('https://doc.owncloud.com/server', '10.0', $changeFreq);
+        $priority = 0.6;
+        $builder = new SitemapBuilder('https://doc.owncloud.com/server', '10.0', $priority);
 
         $testSitemapXml = '<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
@@ -170,7 +170,7 @@ class SitemapBuilderTest extends \PHPUnit\Framework\TestCase
         $dom->formatOutput = true;
 
         $this->assertSame(
-            sprintf($testSitemapXml, (new \DateTime())->format(\DateTime::W3C), $changeFreq),
+            sprintf($testSitemapXml, (new \DateTime())->format(\DateTime::W3C), $priority),
             trim($dom->saveXml())
         );
     }
