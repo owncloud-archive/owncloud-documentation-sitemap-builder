@@ -27,7 +27,7 @@ Below is a sample of how to use the package.
 It shows how to instantiate a new `SitemapBuilder` instance, which is constructed with the default ownCloud basePath and version settings.
 On this instance:
  
-1. A call to `getFileList` is made. This converts the `.rst` files found under `../documentation` into a set of equivalent URLs.
+1. A call to `getSitemapUrlList` is made. This converts the `.rst` files found under `../documentation` into a set of equivalent URLs.
 2. The generated URLs list is then passed to `generateSiteMapXml`, which builds a sitemap.xml string from the supplied information.    
 
 ```php
@@ -38,7 +38,7 @@ require_once ('vendor/autoload.php');
 $builder = new OwnCloud\SiteMapBuilder\SitemapBuilder();
 
 $builder->generateSiteMapXml(
-    $builder->getFileList(
+    $builder->getSitemapUrlList(
         realpath('../documentation/'), 
         'rst'
     )

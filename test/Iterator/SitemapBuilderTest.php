@@ -74,7 +74,7 @@ class SitemapBuilderTest extends \PHPUnit\Framework\TestCase
             'https://doc.owncloud.com/server/10.0/user_manual/files/version_control.html',
         ];
 
-        $files = $builder->getFileList(vfsStream::url('root/ownCloud/documentation'), 'rst');
+        $files = $builder->getSitemapUrlList(vfsStream::url('root/ownCloud/documentation'), 'rst');
         $this->assertSame($matchingFiles, $files, "Expected a different set of matching files");
     }
 
@@ -161,7 +161,7 @@ class SitemapBuilderTest extends \PHPUnit\Framework\TestCase
 </urlset>';
 
         $generatedSitemapXml = $builder->generateSiteMapXml(
-            $builder->getFileList(vfsStream::url('root/ownCloud/documentation'), 'rst')
+            $builder->getSitemapUrlList(vfsStream::url('root/ownCloud/documentation'), 'rst')
         );
 
         // Format the generated output so that it's easier to test against

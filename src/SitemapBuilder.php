@@ -15,6 +15,7 @@ class SitemapBuilder
     const BASE_PATH = 'https://doc.owncloud.com/server';
     const PRIORITY = 0.8;
     const VERSION = '10.0';
+    const FILEPATH_PREFIX_REGEX = '/.*(?=user_manual|admin_manual|developer_manual)/';
 
     /**
      * @var string
@@ -61,28 +62,14 @@ class SitemapBuilder
      * @param string $extension
      * @return array
      */
-    public function getFileList($path, $extension)
+    public function getSitemapUrlList($path, $extension)
     {
         // retrieve a filtered list of file names, based on the specified extension.
         $iterator = new RestructuredTextFilterIterator(new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator($path, \FilesystemIterator::CURRENT_AS_PATHNAME)
         ), $extension);
-        $files = [];
 
-        foreach($iterator as $file) {
-            $filename = str_replace(
-                ['\\', '.rst'],
-                ['/', '.html'],
-                preg_replace(
-                    '/.*(?=user_manual|admin_manual|developer_manual)/',
-                    '',
-                    $file
-                )
-            );
-            $files[] = sprintf('%s/%s/%s', $this->basePath, $this->version, $filename);
-        }
-
-        return $files;
+        return $this->convertFilesToUrls($iterator, $extension);
     }
 
     /**
@@ -106,5 +93,28 @@ class SitemapBuilder
         $urlSetWriter = new Writer\UrlSetWriter();
 
         return $urlSetWriter->write(new Component\UrlSet($urlList));
+    }
+
+    /**
+     * Convert a list of retrieved files to an equivalent list of URLs
+     *
+     * @param \Traversable $iterator
+     * @param string $extension
+     * @return array
+     */
+    private function convertFilesToUrls(\Traversable $iterator, $extension)
+    {
+        $urlList = [];
+
+        foreach ($iterator as $filename) {
+            $url = str_replace(
+                ['\\', $extension],
+                ['/', 'html'],
+                preg_replace(self::FILEPATH_PREFIX_REGEX, '', $filename)
+            );
+            $urlList[] = sprintf('%s/%s/%s', $this->basePath, $this->version, $url);
+        }
+
+        return $urlList;
     }
 }
